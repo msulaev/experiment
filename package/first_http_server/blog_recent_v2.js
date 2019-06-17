@@ -5,14 +5,14 @@ http.createServer( (req, res) => {
 }).listen(8000, '127.0.0.1');
 
 function getTitles(res) {
-    fs.readFile('./titles.json', (err, data) => {
+    fs.readFile('package/first_http_server/titles.json', (err, data) => {
         if (err) return hadError(err, res);
         getTemplate(JSON.parse(data.toString()), res);
     })
 }
 
 function getTemplate(titles, res) {
-    fs.readFile("./template.html", (err, data) => {
+    fs.readFile("package/first_http_server/template.html", (err, data) => {
         if (err) return hadError(err, res);
         formatHTML(titles, data.toString(), res);
     });
